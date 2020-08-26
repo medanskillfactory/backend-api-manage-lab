@@ -17,11 +17,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('qrcode', function () {
-//     return QrCode::size(250)
-//         ->backgroundColor(255, 255, 204)
-//         ->generate('MyNotePaper');
-// });
+Route::get('home', 'Api\V1\UserController@home');
+
+Route::get('qrcode', function () {
+    return QrCode::size(250)
+        ->generate('Testing qrcode');
+});
 
 Route::get('qrcode-with-image', function () {
     $image = \QrCode::format('png')
