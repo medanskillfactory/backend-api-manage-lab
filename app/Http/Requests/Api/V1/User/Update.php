@@ -4,6 +4,7 @@ namespace App\Http\Requests\Api\V1\User;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Hash;
 
 class Update extends FormRequest
 {
@@ -45,4 +46,5 @@ class Update extends FormRequest
         $this->getInputSource()->replace($data);
         return parent::getValidatorInstance();
     }
+    
 }

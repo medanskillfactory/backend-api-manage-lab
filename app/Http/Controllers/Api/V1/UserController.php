@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\Api\V1\User\Store;
 use App\Http\Requests\Api\V1\User\Update;
+use App\Http\Resources\UserCollection;
 use App\User;
 
 class UserController extends Controller
@@ -35,7 +36,7 @@ class UserController extends Controller
             $user = $user->orderBy('created_at', 'DESC');
         }
         $user = $user->paginate($request->has('limit') ? $request->limit : 25);
-        return response()->json($user);
+        return (new UserCollection($user));
     }
 
     /**

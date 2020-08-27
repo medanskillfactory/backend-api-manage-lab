@@ -23,10 +23,10 @@ class RoomController extends Controller
     public function index(Request $request)
     {
         $room = $this->model;
-        if ($request->has('name') && trim($request->name) !== '') {
-            $room = $room->where('name', 'Like', '%'.$request->name.'%');
+        if ($request->has('code') && trim($request->code) !== '') {
+            $room = $room->where('code', 'Like', '%'.$request->code.'%');
         }
-        if ($request->has('order') && in_array($request->input('order'), ['name', 'email', 'created_at'])) {
+        if ($request->has('order') && in_array($request->input('order'), ['code', 'nama', 'created_at'])) {
             $room = $room->orderBy($request->input('order'), $request->input('ascending')? 'ASC' : 'DESC');
         } else {
             $room = $room->orderBy('created_at', 'DESC');
@@ -100,7 +100,7 @@ class RoomController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**

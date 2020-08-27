@@ -5,7 +5,7 @@ namespace App\Http\Requests\Api\V1\Room;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class Store extends FormRequest
+class Update extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,7 +25,7 @@ class Store extends FormRequest
     public function rules()
     {
         return [
-            'code' => 'required|unique:rooms',
+            'code' => Rule::unique('rooms')->ignore($this->room, 'id'),
             'name' => 'required|max:50',
             'description' => 'required|max:200'
         ];
