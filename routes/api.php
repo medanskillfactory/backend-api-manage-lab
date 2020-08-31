@@ -27,5 +27,8 @@ Route::prefix('v1')->namespace('Api\V1')->group(function () {
         Route::resource('users', 'UserController');
         Route::resource('rooms', 'RoomController');
         Route::resource('items', 'ItemController');
+        Route::resource('reports', 'ReportController');
+        Route::resource('typereports', 'TypeReportController');
+        Route::resource('reportdetails', 'ReportDetailController');
     });
 });
